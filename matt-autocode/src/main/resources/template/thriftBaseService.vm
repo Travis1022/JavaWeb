@@ -1,0 +1,391 @@
+#set($searchColCount = 1)
+##包定义
+package $!{targetPackage};
+import java.util.List;
+import java.util.ArrayList;
+import com.hzcec.common.service.BaseMattService;
+import org.matt.persistent.db.mybatis.MybatisPage;
+import org.apache.log4j.Logger;
+import com.hzcec.common.utils.ThriftUtil;
+##导入dao、实体
+import $!{generatorContext.domain};
+import $!{generatorContext.ibaseservice};
+import org.matt.util.StringHelper;
+
+
+/**
+ * @description:
+ * @author: autoCode
+ * @history:
+ */
+public class $!{className}BaseService  implements I$!{className}BaseService.Iface{
+
+	@Override
+	public $!{className} load($!{className} t$!{className}){
+		try {
+			$!{generatorContext.javaClassName} $!{table.fieldName} = new $!{generatorContext.javaClassName}();
+			ThriftUtil.thriftDomainToJavaDomain(t$!{className}, t$!{className}.getClass(), $!{table.fieldName}, $!{table.fieldName}.getClass());
+			$!{table.fieldName}.load();
+			$!{className} tt$!{className} = new $!{className}();
+			ThriftUtil.javaDomainToThriftDomain($!{table.fieldName}, $!{table.fieldName}.getClass(), tt$!{className}, tt$!{className}.getClass());
+			return tt$!{className};
+		}catch(Exception ex){
+			logger.error(ex.getMessage());
+		}
+		return null;
+	}
+	
+	@Override
+	public $!{className} loadEqual($!{className} t$!{className}){
+		try {
+			$!{generatorContext.javaClassName} $!{table.fieldName} = new $!{generatorContext.javaClassName}();
+			ThriftUtil.thriftDomainToJavaDomain(t$!{className}, t$!{className}.getClass(), $!{table.fieldName}, $!{table.fieldName}.getClass());
+			$!{table.fieldName}.loadEqual();
+			$!{className} tt$!{className} = new $!{className}();
+			ThriftUtil.javaDomainToThriftDomain($!{table.fieldName}, $!{table.fieldName}.getClass(), tt$!{className}, tt$!{className}.getClass());
+			return tt$!{className};
+		}catch(Exception ex){
+			logger.error(ex.getMessage());
+		}
+		return null;
+	}
+	
+	@Override
+	public List<$!{className}> select($!{className} t$!{className}){
+		try {
+			$!{generatorContext.javaClassName} $!{table.fieldName} = new $!{generatorContext.javaClassName}();
+			ThriftUtil.thriftDomainToJavaDomain(t$!{className}, t$!{className}.getClass(), $!{table.fieldName}, $!{table.fieldName}.getClass());
+			List<$!{generatorContext.javaClassName}> list =$!{table.fieldName}.select();
+			List<$!{className}> tList = new ArrayList<$!{className}>();
+			if(list!=null){
+				for(int i=0;i<list.size();i++){
+					$!{generatorContext.javaClassName} j$!{className} =list.get(i);
+					$!{className} tt$!{className}= new  $!{className}();
+					ThriftUtil.javaDomainToThriftDomain(j$!{className}, j$!{className}.getClass(), tt$!{className}, tt$!{className}.getClass());
+					tList.add(tt$!{className});
+				}
+			}
+			return tList;
+		}catch(Exception ex){
+			logger.error(ex.getMessage());
+		}
+		return null;
+	}
+	
+	@Override
+	public List<$!{className}> selectEqual($!{className} t$!{className}){
+		try {
+			$!{generatorContext.javaClassName} $!{table.fieldName} = new $!{generatorContext.javaClassName}();
+			ThriftUtil.thriftDomainToJavaDomain(t$!{className}, t$!{className}.getClass(), $!{table.fieldName}, $!{table.fieldName}.getClass());
+			List<$!{generatorContext.javaClassName}> list =$!{table.fieldName}.selectEqual();
+			List<$!{className}> tList = new ArrayList<$!{className}>();
+			if(list!=null){
+				for(int i=0;i<list.size();i++){
+					$!{generatorContext.javaClassName} j$!{className} =list.get(i);
+					$!{className} tt$!{className} = new  $!{className}();
+					ThriftUtil.javaDomainToThriftDomain(j$!{className}, j$!{className}.getClass(), tt$!{className}, tt$!{className}.getClass());
+					tList.add(tt$!{className});
+				}
+			}
+			return tList;
+		}catch(Exception ex){
+			logger.error(ex.getMessage());
+		}
+		return null;
+	}
+	
+	@Override
+	public $!{className} selectSingle($!{className} t$!{className}){
+		try {
+			$!{generatorContext.javaClassName} $!{table.fieldName} = new $!{generatorContext.javaClassName}();
+			ThriftUtil.thriftDomainToJavaDomain(t$!{className}, t$!{className}.getClass(), $!{table.fieldName}, $!{table.fieldName}.getClass());
+			$!{table.fieldName}.selectSingle();
+			$!{className} tt$!{className} = new $!{className}();
+			ThriftUtil.javaDomainToThriftDomain($!{table.fieldName}, $!{table.fieldName}.getClass(), tt$!{className}, tt$!{className}.getClass());
+			return tt$!{className};
+		}catch(Exception ex){
+			logger.error(ex.getMessage());
+		}
+		return null;
+	}
+	
+	@Override
+	public $!{className} selectEqualSingle($!{className} t$!{className}){
+		try {
+			$!{generatorContext.javaClassName} $!{table.fieldName} = new $!{generatorContext.javaClassName}();
+			ThriftUtil.thriftDomainToJavaDomain(t$!{className}, t$!{className}.getClass(), $!{table.fieldName}, $!{table.fieldName}.getClass());
+			$!{table.fieldName}.selectEqualSingle();
+			$!{className} tt$!{className} = new $!{className}();
+			ThriftUtil.javaDomainToThriftDomain($!{table.fieldName}, $!{table.fieldName}.getClass(), tt$!{className}, tt$!{className}.getClass());
+			return tt$!{className};
+		}catch(Exception ex){
+			logger.error(ex.getMessage());
+		}
+		return null;
+	}
+	
+	@Override
+	public List<$!{className}> selectAll($!{className} t$!{className}){
+		try {
+			$!{generatorContext.javaClassName} $!{table.fieldName} = new $!{generatorContext.javaClassName}();
+			List<$!{generatorContext.javaClassName}> list =$!{table.fieldName}.selectAll();
+			List<$!{className}> tList = new ArrayList<$!{className}>();
+			if(list!=null){
+				for(int i=0;i<list.size();i++){
+					$!{generatorContext.javaClassName} j$!{className} =list.get(i);
+					$!{className} tt$!{className} = new  $!{className}();
+					ThriftUtil.javaDomainToThriftDomain(j$!{className}, j$!{className}.getClass(), tt$!{className}, tt$!{className}.getClass());
+					tList.add(tt$!{className});
+				}
+			}
+			return tList;
+		}catch(Exception ex){
+			logger.error(ex.getMessage());
+		}
+		return null;
+	}
+	
+	@Override
+	public List queryPageList($!{className} t$!{className}) {
+		// TODO Auto-generated method stub
+		try {
+			$!{generatorContext.javaClassName} $!{table.fieldName} = new $!{generatorContext.javaClassName}();
+			ThriftUtil.thriftDomainToJavaDomain(t$!{className}, t$!{className}.getClass(), $!{table.fieldName}, $!{table.fieldName}.getClass());
+			MybatisPage page = new MybatisPage();
+			if($!{table.fieldName}.getPage()!=null&&$!{table.fieldName}.getRows()!=null){
+				page.setPage($!{table.fieldName}.getPage());
+				page.setPagesize($!{table.fieldName}.getRows());
+			}
+			List<$!{generatorContext.javaClassName}> list =$!{table.fieldName}.queryPageList(page);
+			List<$!{className}> tList = new ArrayList<$!{className}>();
+			if(list!=null){
+				for(int i=0;i<list.size();i++){
+					$!{generatorContext.javaClassName} j$!{className} =list.get(i);
+					$!{className} tt$!{className} = new  $!{className}();
+					ThriftUtil.javaDomainToThriftDomain(j$!{className}, j$!{className}.getClass(), tt$!{className}, tt$!{className}.getClass());
+					tList.add(tt$!{className});
+				}
+			}
+			return tList;
+		}catch(Exception ex){
+			logger.error(ex.getMessage());
+		}
+		return null;
+	}
+	
+	@Override
+	public int count($!{className} t$!{className}){
+		try {
+			$!{generatorContext.javaClassName} $!{table.fieldName} = new $!{generatorContext.javaClassName}();
+			ThriftUtil.thriftDomainToJavaDomain(t$!{className}, t$!{className}.getClass(), $!{table.fieldName}, $!{table.fieldName}.getClass());
+			return $!{table.fieldName}.count();
+		}catch(Exception ex){
+			logger.error(ex.getMessage());
+		}
+		return 0;
+	}
+
+	@Override
+	public int countEqual($!{className} t$!{className}){
+		try {
+			$!{generatorContext.javaClassName} $!{table.fieldName} = new $!{generatorContext.javaClassName}();
+			ThriftUtil.thriftDomainToJavaDomain(t$!{className}, t$!{className}.getClass(), $!{table.fieldName}, $!{table.fieldName}.getClass());
+			return $!{table.fieldName}.countEqual();
+		}catch(Exception ex){
+			logger.error(ex.getMessage());
+		}
+		return 0;
+	}
+	
+	@Override
+	public boolean exist($!{className} t$!{className}){
+		try {
+			$!{generatorContext.javaClassName} $!{table.fieldName} = new $!{generatorContext.javaClassName}();
+			ThriftUtil.thriftDomainToJavaDomain(t$!{className}, t$!{className}.getClass(), $!{table.fieldName}, $!{table.fieldName}.getClass());
+			return $!{table.fieldName}.exist();
+		}catch(Exception ex){
+			logger.error(ex.getMessage());
+		}
+		return false;
+	}
+	
+	@Override
+	public long insert($!{className} t$!{className}){
+		try {
+			$!{generatorContext.javaClassName} $!{table.fieldName} = new $!{generatorContext.javaClassName}();
+			ThriftUtil.thriftDomainToJavaDomain(t$!{className}, t$!{className}.getClass(), $!{table.fieldName}, $!{table.fieldName}.getClass());
+			$!{table.fieldName}.insert();
+			return StringHelper.formatLong($!{table.fieldName}.getId(),0);
+		}catch(Exception ex){
+			logger.error(ex.getMessage());
+			return 0;
+		}
+		
+	}
+	
+	@Override
+	public long insertOrUpdate($!{className} t$!{className}) {
+		// TODO Auto-generated method stub
+		try {
+			$!{generatorContext.javaClassName} $!{table.fieldName} = new $!{generatorContext.javaClassName}();
+			ThriftUtil.thriftDomainToJavaDomain(t$!{className}, t$!{className}.getClass(), $!{table.fieldName}, $!{table.fieldName}.getClass());
+			$!{table.fieldName}.insertOrUpdate();
+			return StringHelper.formatLong($!{table.fieldName}.getId(),0);
+		}catch(Exception ex){
+			logger.error(ex.getMessage());
+			return 0;
+		}
+	}
+	
+	@Override
+	public boolean Delete($!{className} t$!{className}){
+		try {
+			$!{generatorContext.javaClassName} $!{table.fieldName} = new $!{generatorContext.javaClassName}();
+			ThriftUtil.thriftDomainToJavaDomain(t$!{className}, t$!{className}.getClass(), $!{table.fieldName}, $!{table.fieldName}.getClass());
+			$!{table.fieldName}.delete();
+			return true;
+		}catch(Exception ex){
+			logger.error(ex.getMessage());
+		}
+		return false;
+	}
+	
+	@Override
+	public boolean deleteEqual($!{className} t$!{className}){
+		try {
+			$!{generatorContext.javaClassName} $!{table.fieldName} = new $!{generatorContext.javaClassName}();
+			ThriftUtil.thriftDomainToJavaDomain(t$!{className}, t$!{className}.getClass(), $!{table.fieldName}, $!{table.fieldName}.getClass());
+			$!{table.fieldName}.deleteEqual();
+			return true;
+		}catch(Exception ex){
+			logger.error(ex.getMessage());
+		}
+		return false;
+	}
+	
+	@Override
+	public boolean  update($!{className} t$!{className}){
+		try {
+			$!{generatorContext.javaClassName} $!{table.fieldName} = new $!{generatorContext.javaClassName}();
+			ThriftUtil.thriftDomainToJavaDomain(t$!{className}, t$!{className}.getClass(), $!{table.fieldName}, $!{table.fieldName}.getClass());
+			$!{table.fieldName}.update();
+			return true;
+		}catch(Exception ex){
+			logger.error(ex.getMessage());
+			return false;
+		}
+	}
+	
+	@Override
+	public boolean updateExist($!{className} t$!{className},long id){
+		try {
+			$!{generatorContext.javaClassName} $!{table.fieldName} = new $!{generatorContext.javaClassName}();
+			ThriftUtil.thriftDomainToJavaDomain(t$!{className}, t$!{className}.getClass(), $!{table.fieldName}, $!{table.fieldName}.getClass());
+			return $!{table.fieldName}.updateExist(id);
+		}catch(Exception ex){
+			logger.error(ex.getMessage());
+		}
+		return false;
+	}
+	
+	@Override
+	public boolean  updateNull($!{className} t$!{className}){
+		try {
+			$!{generatorContext.javaClassName} $!{table.fieldName} = new $!{generatorContext.javaClassName}();
+			ThriftUtil.thriftDomainToJavaDomain(t$!{className}, t$!{className}.getClass(), $!{table.fieldName}, $!{table.fieldName}.getClass());
+			$!{table.fieldName}.updateNull();
+			return true;
+		}catch(Exception ex){
+			logger.error(ex.getMessage());
+		}
+		return false;
+	}
+	
+	@Override
+	public boolean batchInsert(List<$!{className}> t$!{className}List){
+		try {
+		// TODO Auto-generated method stub
+			if(t$!{className}List!=null&&t$!{className}List.size()>0){
+				for(int i=0;i<t$!{className}List.size();i++){
+					$!{className} t$!{className} = t$!{className}List.get(i);
+					if (t$!{className} != null && t$!{className}.getId()>0) {
+						$!{generatorContext.javaClassName} $!{table.fieldName} = new $!{generatorContext.javaClassName}();
+						ThriftUtil.thriftDomainToJavaDomain(t$!{className}, t$!{className}.getClass(), $!{table.fieldName}, $!{table.fieldName}.getClass());
+						$!{table.fieldName}.insert();
+					}
+				}
+				return true;
+			}
+		}catch(Exception ex){
+			logger.error(ex.getMessage());
+		}
+		return false;
+	}
+	
+	@Override
+	public boolean batchUpdate(List<$!{className}> t$!{className}List){
+		try {
+		// TODO Auto-generated method stub
+			if(t$!{className}List!=null&&t$!{className}List.size()>0){
+				for(int i=0;i<t$!{className}List.size();i++){
+					$!{className} t$!{className} = t$!{className}List.get(i);
+					if (t$!{className} != null && t$!{className}.getId()>0) {
+						$!{generatorContext.javaClassName} $!{table.fieldName} = new $!{generatorContext.javaClassName}();
+						ThriftUtil.thriftDomainToJavaDomain(t$!{className}, t$!{className}.getClass(), $!{table.fieldName}, $!{table.fieldName}.getClass());
+						$!{table.fieldName}.update();
+					}
+				}
+				return true;
+			}
+		}catch(Exception ex){
+			logger.error(ex.getMessage());
+		}
+		return false;
+	}
+	
+	@Override
+	public boolean batchDelete(List<$!{className}> t$!{className}List){
+		// TODO Auto-generated method stub
+			try {
+			// TODO Auto-generated method stub
+				if(t$!{className}List!=null&&t$!{className}List.size()>0){
+					for(int i=0;i<t$!{className}List.size();i++){
+						$!{className} t$!{className} = t$!{className}List.get(i);
+						if (t$!{className} != null && t$!{className}.getId()>0) {
+							$!{generatorContext.javaClassName} $!{table.fieldName} = new $!{generatorContext.javaClassName}();
+							ThriftUtil.thriftDomainToJavaDomain(t$!{className}, t$!{className}.getClass(), $!{table.fieldName}, $!{table.fieldName}.getClass());
+							$!{table.fieldName}.delete();
+						}
+					}
+					return true;
+				}
+			}catch(Exception ex){
+				logger.error(ex.getMessage());
+			}
+			return false;
+	}
+	
+	@Override
+	public boolean batchDeleteFack(List<$!{className}> t$!{className}List){
+		// TODO Auto-generated method stub
+			try {
+			// TODO Auto-generated method stub
+				if(t$!{className}List!=null&&t$!{className}List.size()>0){
+					for(int i=0;i<t$!{className}List.size();i++){
+						$!{className} t$!{className} = t$!{className}List.get(i);
+						if (t$!{className} != null && t$!{className}.getId()>0) {
+							$!{generatorContext.javaClassName} $!{table.fieldName} = new $!{generatorContext.javaClassName}();
+							ThriftUtil.thriftDomainToJavaDomain(t$!{className}, t$!{className}.getClass(), $!{table.fieldName}, $!{table.fieldName}.getClass());
+							$!{table.fieldName}.setSts("N");
+							$!{table.fieldName}.update();
+						}
+					}
+					return true;
+				}
+			}catch(Exception ex){
+				logger.error(ex.getMessage());
+			}
+			return false;
+	}
+	protected Logger logger = Logger.getLogger(getClass());
+}

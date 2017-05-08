@@ -1,0 +1,27 @@
+##包定义
+package $!{targetPackage};
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import $!{basePackage}.common.action.BaseAction;
+##import domain、service
+import $!{generatorContext.domain};
+import $!{generatorContext.service};
+
+/**
+ * 
+ * @description:$!{className} action
+ * @author: autoCode
+ * @history:
+ */
+ ## 类名
+@Controller
+@RequestMapping("/$!{generatorContext.module}/$!{table.urlName}")
+@SuppressWarnings("serial")
+public class $!{className}Action extends BaseAction<$!{className}> {
+	/*@Autowired
+	@Qualifier("$!{table.fieldName}Service")
+	protected I$!{className}Service $!{table.fieldName}Service;*/
+
+}

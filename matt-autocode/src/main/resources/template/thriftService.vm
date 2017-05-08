@@ -1,0 +1,25 @@
+#set($searchColCount = 1)
+##包定义
+package $!{targetPackage};
+
+import java.util.List;
+
+##导入dao、实体
+import $!{generatorContext.domain};
+import $!{generatorContext.baseservice};
+import $!{generatorContext.iservice};
+/**
+ * @description:
+ * @author: autoCode
+ * @history:
+ */
+public class $!{className}Service extends  $!{className}BaseService implements I$!{className}Service.Iface{
+
+/*
+	@Override
+	public List<$!{className}> queryPaged($!{className} t$!{className}){
+		// TODO Auto-generated method stub
+		return super.select(t$!{className});
+	}
+*/
+}

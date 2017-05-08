@@ -1,0 +1,168 @@
+#set($searchColCount = 1)
+##包定义
+package $!{targetPackage};
+
+import java.util.List;
+##导入dao、实体
+import $!{generatorContext.domain};
+
+/**
+ * @description:
+ * @author: autoCode
+ * @history:
+ */
+public interface I$!{className}BaseService{
+
+	/**
+	 * 根据条件加载一条数据（模糊查询）
+	 * @param  t$!{className} $!{className} 业务实体
+	 * @return $!{className} 返回对象
+	 */
+	public $!{className} load($!{className} t$!{className});
+	
+	/**
+	 * 根据条件加载一条数据（精确查询）
+	 * @param  t$!{className} $!{className} 业务实体
+	 * @return $!{className} 返回对象
+	 */
+	public $!{className} loadEqual($!{className}  t$!{className});
+	
+	
+	/**
+	 * 根据条件查询分页（模糊查询）
+	 * @param  t$!{className} $!{className} 业务实体
+	 * @return List<$!{className}> 返回对象集合
+	 */
+	public List<$!{className}> select($!{className}  t$!{className});
+	
+	/**
+	 * 根据条件查询分页（精确查询）
+	 * @param  t$!{className} $!{className} 业务实体
+	 * @return List<$!{className}> 返回对象集合
+	 */
+	public List<$!{className}> selectEqual($!{className}  t$!{className});
+	
+	/**
+	 * 查询第一条记录（模糊查询）
+	 * @param  t$!{className} $!{className} 业务实体
+	 * @return $!{className} 返回对象
+	 */
+	public $!{className} selectSingle($!{className}  t$!{className});
+	
+	/**
+	 * 查询第一条记录（精确查询）
+	 * @param  t$!{className} $!{className} 业务实体
+	 * @return $!{className} 返回对象
+	 */
+	public $!{className} selectEqualSingle($!{className}  t$!{className});
+	
+	/**
+	 * 查询所有记录
+	 * @param  t$!{className} $!{className} 业务实体
+	 * @return List<$!{className}> 返回对象集合
+	 */
+	public List<$!{className}> selectAll($!{className}  t$!{className});
+	
+	/**
+	 * 查询所有记录
+	 * @param  t$!{className} $!{className} 业务实体(page:当前页,rows:每页记录数)
+	 * @return List<$!{className}> 返回对象集合
+	 */
+	public List<$!{className}> queryPageList($!{className}  t$!{className});
+	
+	/**
+	 * 条件查询数量（精确查询）
+	 * @param  t$!{className} $!{className} 业务实体
+	 * @return int 返回记录数
+	 */
+	public int count($!{className}  t$!{className});
+
+	/**
+	 * 条件查询数量（精确查询）
+	 * @param  t$!{className} $!{className} 业务实体
+	 * @return int 返回记录数
+	 */
+	public int countEqual($!{className}  t$!{className});
+
+	/**
+	 * 根据条件加载一条数据（精确查询）
+	 * @param  t$!{className} $!{className} 业务实体
+	 * @return boolean 
+	 */
+	public boolean exist($!{className}  t$!{className});
+	
+	/**
+	 * 插入
+	 * @param  t$!{className} $!{className} 业务实体
+	 * @return int  返回插入记录数
+	 */
+	public long insert($!{className}  t$!{className});
+	
+	/**
+	 * 插入或更新
+	 * @param  t$!{className} $!{className} 业务实体
+	 * @return int  返回插入或更新记录数
+	 */
+	public long insertOrUpdate($!{className}  t$!{className});
+	
+	/**
+	 * 条件删除(模糊）
+	 * @param  t$!{className} $!{className} 业务实体
+	 * @return int 返回删除记录数
+	 */
+	public boolean Delete($!{className}  t$!{className});
+	
+	/**
+	 * 条件删除(精确）
+	 * @param  t$!{className} $!{className} 业务实体
+	 * @return  int 返回删除记录数
+	 */
+	public boolean deleteEqual($!{className}  t$!{className});
+	/**
+	 * 更新
+	 * @param  t$!{className} $!{className} 业务实体
+	 * @return int 更回删除记录数
+	 */
+	public boolean  update($!{className}  t$!{className});
+	
+	/**
+	 * 更新符合条件的数据
+	 * @param  t$!{className} $!{className} 业务实体
+	 * @param id long ID条件
+	 * @return boolean
+	 */
+	public boolean updateExist($!{className}  t$!{className},long id);
+	
+	/**
+	 * 更新(业务实体没有数据的更新为NULL）
+	 * @param  t$!{className} $!{className} 业务实体
+	 * @return int 返回更新记录数
+	 */
+	public boolean  updateNull($!{className}  t$!{className});
+	
+	/**
+	 * 批量插入(业务实体没有数据的更新为NULL）
+	 * @param  t$!{className}List $!{className}List 业务实体列表
+	 * @return boolean
+	 */
+	public boolean  batchInsert(List<$!{className}>  t$!{className}List);
+	/**
+	 * 批量更新(业务实体没有数据的更新为NULL）
+	 * @param  t$!{className}List $!{className}List 业务实体列表
+	 * @return boolean
+	 */
+	public boolean  batchUpdate(List<$!{className}>  t$!{className}List);
+	
+	/**
+	 * 批量删除(业务实体没有数据的更新为NULL）
+	 * @param  t$!{className}List t$!{className}List 业务实体列表
+	 * @return boolean
+	 */
+	public boolean  batchDelete(List<$!{className}>  t$!{className}List);
+	/**
+	 * 批量假删除(业务实体没有数据的更新为NULL）
+	 * @param  t$!{className}List t$!{className}List 业务实体列表
+	 * @return boolean
+	 */
+	public boolean batchDeleteFack(List<$!{className}> t$!{className}List);
+}

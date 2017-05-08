@@ -1,0 +1,24 @@
+#set($searchColCount = 1)
+##包定义
+package $!{targetPackage};
+
+import org.matt.persistent.db.mybatis.MybatisPage;
+##导入dao、实体
+import $!{generatorContext.domain};
+
+/**
+ * @description:
+ * @author: autoCode
+ * @history:
+ */
+public interface I$!{className}Service{
+
+	/**
+	 * 根据条件查询分页
+	 * @param condition
+	 * @return
+	 */
+/*
+	public abstract MybatisPage queryPaged($!{className} $!{table.fieldName});
+*/
+}

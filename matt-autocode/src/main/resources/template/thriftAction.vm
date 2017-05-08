@@ -1,0 +1,126 @@
+##包定义
+package $!{targetPackage};
+
+
+import java.util.ArrayList;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import org.matt.util.StringHelper;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import $!{basePackage}.common.action.BaseThriftAction;
+import $!{basePackage}.common.utils.JsonUtils;
+import $!{basePackage}.common.utils.ThriftUtil;
+import $!{basePackage}.common.utils.page.ThriftPageInfo;
+import $!{generatorContext.thriftDomain};
+import $!{generatorContext.thriftService};
+import $!{generatorContext.thriftService}.Client;
+import $!{basePackage}.common.thrift.ThriftServiceFactory; 
+/**
+ * 
+ * @description:$!{className} action
+ * @author: autoCode
+ * @history:
+ */
+ ## 类名
+@Controller
+@RequestMapping("/$!{generatorContext.module}/$!{table.urlName}")
+public class $!{className}Action extends BaseThriftAction<$!{generatorContext.domain}> {
+	/**
+	* 分页查询列表.
+	*/
+	@RequestMapping(value = "queryPaged")
+	public void queryPaged(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+			ThriftServiceFactory thriftServiceFactory=getThriftServiceFactory();
+		try {
+			$!{generatorContext.domain} j$!{className} = bindEntity(request, $!{generatorContext.domain}.class);
+			$!{className}	t$!{className} = new $!{className}();
+			ThriftUtil.javaDomainToThriftDomain(j$!{className}, $!{generatorContext.domain}.class, t$!{className}, $!{className}.class);
+			Client $!{table.fieldName}Service = (Client) thriftServiceFactory.openThriftService(I$!{className}Service.class);
+			List<$!{className}> list = $!{table.fieldName}Service.queryPageList(t$!{className});
+			int count = $!{table.fieldName}Service.count(t$!{className});
+			thriftServiceFactory.closeThriftService();
+			List<$!{generatorContext.domain}> javaList =ThriftUtil.ThriftListToJavaList(list,$!{className}.class,$!{generatorContext.domain}.class);
+			ThriftPageInfo<$!{generatorContext.domain}> page = new ThriftPageInfo<$!{generatorContext.domain}>(count,javaList);
+			printJson(response,JsonUtils.bean2Json(page,"YYYY-MM-dd HH:mm:ss"));
+		} catch (Exception e) {
+			thriftServiceFactory.closeThriftService();
+			logger.error("queryPaged",e);
+			printJson(response, messageFailureWrap("查询失败！"));
+		}
+	}
+	
+	@RequestMapping(value = "save", method = RequestMethod.POST)
+	public void save(HttpServletRequest request, HttpServletResponse response) {
+		ThriftServiceFactory thriftServiceFactory=getThriftServiceFactory();
+		try {
+			$!{generatorContext.domain} j$!{className} = bindEntity(request, $!{generatorContext.domain}.class);
+			$!{className}	t$!{className} = new $!{className}();
+			ThriftUtil.javaDomainToThriftDomain(j$!{className}, $!{generatorContext.domain}.class, t$!{className}, $!{className}.class);
+			Client $!{table.fieldName}Service = (Client) thriftServiceFactory.openThriftService(I$!{className}Service.class);
+			$!{table.fieldName}Service.insertOrUpdate(t$!{className});
+			thriftServiceFactory.closeThriftService();
+			printJson(response, messageSuccuseWrap());
+		} catch (Exception e) {
+			thriftServiceFactory.closeThriftService();
+			logger.error("save", e);
+			printJson(response, messageFailureWrap("保存失败！"));
+		}
+	}
+	
+	
+	 @RequestMapping(value = "delete/{ids}",method=RequestMethod.POST)
+	 public void delete(@PathVariable("ids") String ids, HttpServletResponse response) {
+		ThriftServiceFactory thriftServiceFactory=getThriftServiceFactory();
+		try {
+			if(ids!=null&&ids.length()>0){
+				String[] idsarr = ids.split(",");
+				List<$!{className}> list = new ArrayList<$!{className}>();
+				for(int i=0;i<idsarr.length;i++){
+					$!{className}	t$!{className}  = new $!{className}();
+					t$!{className}.setId(StringHelper.formatLong(idsarr[i], -1));
+					list.add(t$!{className});
+				}
+				Client $!{table.fieldName}Service = (Client) thriftServiceFactory.openThriftService(I$!{className}Service.class);
+				$!{table.fieldName}Service.batchDelete(list);
+				thriftServiceFactory.closeThriftService();
+			}
+			printJson(response, messageSuccuseWrap());
+		} catch (Exception e) {
+			thriftServiceFactory.closeThriftService();
+			logger.error("delete", e);
+			printJson(response, messageFailureWrap("删除失败！"));
+		}
+	 }
+	 
+	 @RequestMapping(value = "edit/{id}")
+	 public String edit(@PathVariable("id") Long id, Model model){
+		ThriftServiceFactory thriftServiceFactory=getThriftServiceFactory();
+		 try {
+			if (id != null){
+				$!{className}	t$!{className} = new $!{className}();
+				t$!{className}.setId(id);
+				Client $!{table.fieldName}Service = (Client) thriftServiceFactory.openThriftService(I$!{className}Service.class);
+				t$!{className}=$!{table.fieldName}Service.load(t$!{className});
+				thriftServiceFactory.closeThriftService();
+				$!{generatorContext.domain} j$!{className} = new $!{generatorContext.domain}();
+				ThriftUtil.thriftDomainToJavaDomain(t$!{className}, $!{className}.class, j$!{className}, $!{generatorContext.domain}.class);
+				model.addAttribute("$!{table.fieldName}", j$!{className});
+			}
+		 }catch (Exception e) {
+				thriftServiceFactory.closeThriftService();
+				logger.error("edit", e);
+		 }
+		 return getNameSpace() + "edit";
+				
+	}
+
+}

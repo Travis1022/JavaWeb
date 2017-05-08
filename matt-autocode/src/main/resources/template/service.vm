@@ -1,0 +1,34 @@
+#set($searchColCount = 1)
+##包定义
+package $!{targetPackage};
+
+import org.springframework.stereotype.Service;
+import com.hzcec.common.service.BaseMattService;
+import org.matt.persistent.db.mybatis.MybatisPage;
+
+##导入dao、实体
+import $!{generatorContext.domain};
+import $!{generatorContext.iservice};
+
+/**
+ * @description:
+ * @author: autoCode
+ * @history:
+ */
+@Service
+public class  $!{className}Service extends BaseMattService implements I$!{className}Service{
+
+	
+	/**
+	 * 查询分页
+	 * @param condition
+	 * @return
+	 */
+/*
+	public MybatisPage queryPaged($!{className} $!{table.fieldName}) {
+		// TODO Auto-generated method stub
+		return super.getSelectPage($!{table.fieldName}, page);
+	}
+*/
+
+}

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config targetProject="D:\\test" targetPackage="com.hzcec" targetPage="/src/main/webapp/WEB-INF/content/">
+	<!--jdbcConnection 数据库连接信息
+		driverClass：数据库驱动程序
+		connectionURL：数据库连接串
+		userId:数据库用户名
+		password：用户密码
+		infSql:读取表信息的sql,mysql:"SELECT c.COLUMN_COMMENT ,c.COLUMN_NAME , c.COLUMN_TYPE , c.COLUMN_KEY ,c.DATA_TYPE , c.IS_NULLABLE ,c.COLUMN_DEFAULT  FROM information_schema.COLUMNS c WHERE c.TABLE_NAME = '${table_name}' AND c.TABLE_SCHEMA = '${TABLE_SCHEMA}'"
+	 -->
+    <!-- mysql -->
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                    connectionURL="jdbc:mysql://10.0.0.110:3306/hzcec_dataserver?useUnicode=true"
+                    userId="hzcec"
+                    password="hzcec@2016"
+                    infSql = "SELECT   c.COLUMN_COMMENT ,c.COLUMN_NAME , c.COLUMN_TYPE , c.COLUMN_KEY ,c.DATA_TYPE , c.IS_NULLABLE ,c.COLUMN_DEFAULT   FROM information_schema.COLUMNS c WHERE c.TABLE_NAME = '${TABLE_NAME}' AND c.TABLE_SCHEMA = '${TABLE_SCHEMA}'" 
+                    >
+    </jdbcConnection>
+<!-- 	<jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+                 connectionURL="jdbc:sqlserver://10.0.0.110:1433;DatabaseName=test;useUnicode=true&amp;characterEncoding=UTF-8"
+                 userId="hzcec"
+                 password="hzcec123"
+                 infSql = "SELECT a.name column_name,(case when (SELECT count(*) FROM sysobjects WHERE (name in (SELECT name FROM sysindexes WHERE (id = a.id) AND (indid in (SELECT indid FROM sysindexkeys WHERE (id = a.id) AND (colid in (SELECT colid FROM syscolumns WHERE (id = a.id) AND (name = a.name) ) ) ) ) ) ) AND (xtype = 'PK') ) &gt; 0 then 'Y' else 'N' end) COLUMN_KEY,b.name column_type,b.name data_type, COLUMNPROPERTY(a.id, a.name, 'PRECISION') AS column_length, isnull(COLUMNPROPERTY(a.id, a.name, 'Scale'),0) as column_decimal, cast(isnull(g.[value], a.name) as nvarchar(150)) as column_comment FROM syscolumns a LEFT JOIN systypes b ON a.xtype = b.xusertype INNER JOIN sysobjects d ON a.id = d.id AND d.xtype = 'U' AND d.name &lt;&gt; 'dtproperties' LEFT JOIN syscomments e ON a.cdefault = e.id LEFT JOIN sys.extended_properties g ON a.id = g.major_id AND a.colid = g.minor_id WHERE d.name IN ('${TABLE_NAME}') ORDER BY a.id,a.colorder"
+                  >
+	</jdbcConnection> -->
+	
+	<!-- oracle -->
+	<!-- 
+	<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+		connectionURL="jdbc:oracle:thin:@10.0.0.110:1521:test" 
+		userId="hzcec"
+		password="hzcec123"
+		infSql = "select f.comments as COLUMN_COMMENT,a.column_name as COLUMN_NAME,a.data_type as COLUMN_TYPE,e.key as COLUMN_KEY,a.data_type as DATA_TYPE, a.nullable as IS_NULLABLE,a.data_default as COLUMN_DEFAULT from user_tab_columns a, user_col_comments f,(select b.table_name, b.index_name,b.uniqueness, c.column_name,decode(d.constraint_name,NULL,'N','Y') key from user_indexes b, user_ind_columns c,( select constraint_name from user_constraints where constraint_type='P' ) d where b.index_name=c.index_name and b.index_name=d.constraint_name(+) ) e where a.table_name='${TABLE_NAME}' and a.table_name=e.table_name(+) and a.column_name=e.column_name(+) and a.table_name=f.table_name and a.column_name=f.column_name order by a.column_id"
+		>
+	</jdbcConnection>
+	 -->
+	<generators>
+		<!--generator，要生成的代码类型
+			targetProject:代码存放位置，
+		    targetPackage:代码包路径，
+		    template：使用渲染模板， 
+		    type:代码类型，xml:sql Map文件，domain：实体对象，dao：数据访问对象，service：服务对象，action，page:vm模板
+		     -->
+		<!-- domain 文件生成 -->
+		<generator type="domain"/>
+		
+		<!-- sql map 文件生成 -->
+		<generator type="xml" template="/template/mapXml.vm"/>
+		
+		<!-- service 接口生成 -->
+		<generator type="iservice" />
+		
+		<!-- service 文件生成 -->
+		<generator type="service" />
+		
+		<!-- action 文件生成 -->
+		<!--
+		<generator type="action" />
+		-->
+		
+		<!-- 页面  文件生成 -->
+		
+		<generator type="page" template="/template/pageIndex.vm,/template/pageAdd.vm,/template/pageEdit.vm"/>
+	
+	
+		<!--thrift service 基本接口生成 -->
+		<generator type="thriftIBaseService" />
+		
+		<!--thrift service 基本接口实现类生成 -->
+		<generator type="thriftBaseService" />
+		
+		<!--thrift service 接口类生成 -->
+		<generator type="thriftIService" />
+		
+		<!--thrift service 接口实现类生成 -->
+		<generator type="thriftService" />
+		
+		<!-- thriftAction 文件生成 -->
+		<generator type="thriftAction" />
+		
+	</generators>
+	<tables>
+		<!--生成代码的表信息
+			schema：数据库schema
+			tableName：数据库表名
+			className:对应java实体名，如果按照数据库设计规范设计可不用配置，按照tableName安装驼峰规则转换得到
+			name:对应的实体名称，用于生成页面时展示使用
+		 -->
+		 
+		<!--
+			<table schema="ssm" tableName="sys_user" name="用户表" className="SysUser"/>
+			<table schema="ssm" tableName="sys_role" name="角色表" className="SysRole"/>
+			<table schema="ssm" tableName="sys_user_role" name="用户角色表" className="SysUserRole"/>
+			<table schema="ssm" tableName="sys_module" name="模块表" className="SysModule"/>
+			<table schema="ssm" tableName="sys_role_module" name="角色模块表" className="SysRoleModule"/>
+			<table schema="ssm" tableName="sys_dictionary" name="数据字典表" className="SysDictionary"/>
+			<table schema="ssm" tableName="sys_log" name="系统日志表" className="SysLog"/>
+			<table schema="ssm" tableName="sys_login" name="登录表" className="SysLogin"/>
+			<table schema="ssm" tableName="sys_config_appfile" name="文件上传信息表" className="SysConfigAppfile"/>
+			<table schema="ssm" tableName="sys_user" name="用户表" className="SysUser"/>
+			<table schema="dataserver" tableName="gms_monitor_realtimegps" name="实时定位表" className="MonitorRealtimeGps"/>
+			<table schema="dataserver" tableName="gms_monitor_historygps" name="历史定位表" className="MonitorHistoryGps"/>
+			<table schema="ssm" tableName="sys_login" name="登录表" className="SysLogin"/>
+			<table schema="ssm" tableName="sys_config_appfile" name="文件上传信息表" className="SysConfigAppfile"/>
+			-->
+			<table schema="hzcec_dataserver" tableName="view_gms_monitor_realtimegps" name="gps实时信息表" className="ViewGmsMonitorRealtimegps"/>
+    </tables>
+</config>

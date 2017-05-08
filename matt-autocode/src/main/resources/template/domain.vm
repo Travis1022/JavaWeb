@@ -1,0 +1,42 @@
+##包定义
+package $!{targetPackage};
+##引用导入
+import com.hzcec.common.domain.BaseEntity;
+import org.matt.persistent.db.find.annotation.model.SSDomain;
+import org.matt.persistent.db.find.annotation.model.SSId;
+import org.matt.persistent.db.find.annotation.model.SSPrimaryKey;
+import org.matt.persistent.db.find.annotation.model.SSProperty;
+
+
+/**
+ * @description:
+ * @author: autoCode
+ * @history:
+ */
+@SSDomain(table="$table.tableName",condition="sts='Y'")
+@SSId(generateType="identity")
+public class $!{className} extends BaseEntity {
+	private static final long serialVersionUID = 1L;
+##属性
+#foreach ($column in $table.columns)
+	/** $!{column.columnCommnet}**/
+#if ($column.fieldName == "id")
+	@SSPrimaryKey
+#elseif($column.columnName.contains("_"))
+	@SSProperty(column = "$!{column.columnName}")
+#end
+	private $!{column.fieldType} $!{column.fieldName};
+	
+#end
+##get/set
+#foreach ($column in $table.columns)
+		
+	public void $!{column.setName}($!{column.fieldType} $!{column.fieldName}){
+		this.$!{column.fieldName} = $!{column.fieldName};
+	} 
+	
+	public $!{column.fieldType} $!{column.getName}(){
+		return $!{column.fieldName};
+	} 
+#end
+}

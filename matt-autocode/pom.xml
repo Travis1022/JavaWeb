@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>matt-autocode</artifactId>
+	<name>matt-autocode</name>
+	<version>1.0.0</version>
+	<parent>
+		<groupId>org.matt</groupId>
+		<artifactId>matt-parent</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<dependencies>
+	    <dependency>
+			<groupId>org.matt</groupId>
+			<artifactId>matt-utils</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+<!-- 
+		<dependency>
+			<groupId>com.hzhy</groupId>
+			<artifactId>matt-commons</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-convention-plugin</artifactId>
+			<version>2.3.16.3</version>
+		</dependency> -->
+		<dependency>
+			<groupId>com.thoughtworks.xstream</groupId>
+			<artifactId>xstream</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<!-- <dependency>
+	   		<groupId>com.microsoft.sqlserver</groupId>
+	    	<artifactId>sqljdbc4</artifactId>
+    		<version>4.0</version>
+		</dependency> -->
+	</dependencies>
+	<build>
+		<plugins>
+			<!-- 
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.4.1</version>
+			</plugin>
+		</plugins>
+	</build>
+	<distributionManagement>
+	    <snapshotRepository>
+	        <id>hzcec-snapshots</id>
+			<url>http://10.0.0.24:8081/nexus/content/repositories/hzcec-snapshots/</url>
+	    </snapshotRepository>
+	    <repository>
+			<id>hzcec-releases</id>
+			<url>http://10.0.0.24:8081/nexus/content/repositories/hzcec-releases/</url>
+	    </repository>
+	</distributionManagement>
+</project>

@@ -1,0 +1,10 @@
+   1. 说明
+   autocode是一种源码工具(matt封装)，可以自动根据数据库表生成基本的action,service,domain层以及基本的JSP页面
+   2. 配置数据库
+   将doc下面的SQL执行到 Navicat for MySql中，生成数据库表。建立本地数据库连接。
+   3. 导入matt-autocode项目。
+   4. 使用方法
+      （1）配置文件 config.xml
+       在配置文件中配置好对应的内容：数据库连接信息，生成代码的类型和存放位置等等。
+      （2）执行AutoCode的main方法
+      执行main方法后即可生成配置表中所对应的代码文件。
