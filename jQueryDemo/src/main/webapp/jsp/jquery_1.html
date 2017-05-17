@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery 简介</title>
+
+<script type="text/javascript" src="jquery-min.js"></script>
+<!--1. jQuery元素选择器：点击隐藏段落-->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("p").click(function() {
+			$(this).hide();
+		});
+	});
+</script>
+
+
+<!-- 2.jQuery CSS选择器：点击按钮改变段落背景颜色 -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("button").click(function() {
+			$("p").css("background-color", "red");
+			alert("测试点击效果");
+		});
+	});
+</script>
+
+<!-- 3.jQuery事件函数 : 例如hide()函数-->
+
+<!-- 4.jQuery元素选择器: $("p#demo") 选取所有 id="demo" 的 <p> 元素。 -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("button#all").click(function() {
+			$("p#all").text("根据id来选择元素");
+		});
+	});
+</script>
+
+<!-- 5.jQuery元素选择器: $("p.demo") 选取所有 class="demo" 的 <p> 元素。 -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("button.classname").click(function() {
+			$("p.classname").text("根据classname来选择元素");
+		});
+	});
+</script>
+
+
+</head>
+<body>
+	<p>如果您点击我，我会消失。</p>
+	<p>点击我，我会消失。</p>
+	<p>也要点击我哦。</p>
+	<button type="button">点击按钮</button>
+
+	<p id="all">元素选择器：根据id区分</p>
+	<button type="button" id="all">元素选择器</button>
+
+	<p class="classname">元素选择器：根据class区分</p>
+	<button type="button" class="classname">元素选择器</button>
+
+	<h4>由于 jQuery 是为处理 HTML 事件而特别设计的，那么当您遵循以下原则时，您的代码会更恰当且更易维护：</h4>
+	<br /> 1. 把所有 jQuery 代码置于事件处理函数中
+	<br /> 2. 把所有事件处理函数置于文档就绪事件处理器中
+	<br /> 3.把 jQuery 代码置于单独的 .js 文件中
+	<br /> 4.如果存在名称冲突，则重命名 jQuery 库
+</body>
+</html>
+
