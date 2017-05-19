@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery动画：滑动</title>
+
+
+<script type="text/javascript" src="jquery-min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".flip").click(function() {
+			$(".panel").slideDown("slow");
+		});
+	});
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".flip_1").click(function() {
+			$(".panel_1").slideUp("slow");
+		});
+	});
+</script>
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".flip_2").click(function() {
+			$(".panel_2").slideToggle("slow");
+		});
+	});
+</script>
+
+<style type="text/css">
+div.panel, p.flip, div.panel_1, p.flip_1, div.panel_2, p.flip_2 {
+	margin: 0px;
+	padding: 5px;
+	text-align: center;
+	background: #e5eecc;
+	border: solid 1px #c3c3c3;
+}
+
+div.panel {
+	height: 150px;
+	display: none;
+}
+
+div.panel_1, div.panel_2 {
+	height: 150px;
+}
+</style>
+
+</head>
+<body>
+	<p>jQuery的滑动效果</p>
+
+	<div class="panel">
+		<p>测试滑动效果</p>
+		<p>jQuery slideDown()</p>
+		<p>jQuery slideUp()</p>
+		<p>jQuery slideToggle()</p>
+	</div>
+	<p class="flip">请点击这里</p>
+	<br />
+
+	<div class="panel_1">
+		<p>测试滑动效果</p>
+		<p>jQuery slideDown()</p>
+		<p>jQuery slideUp()</p>
+		<p>jQuery slideToggle()</p>
+	</div>
+	<p class="flip_1">请点击这里</p>
+	<br />
+
+	<div class="panel_2">
+		<p>测试滑动效果</p>
+		<p>jQuery slideDown()</p>
+		<p>jQuery slideUp()</p>
+		<p>jQuery slideToggle()</p>
+	</div>
+	<p class="flip_2">请点击这里</p>
+</body>
+</html>
