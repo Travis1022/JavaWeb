@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery动画</title>
+
+<script type="text/javascript" src="jquery-min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("button.single").click(function() {
+			$("div.single").animate({
+				left : '550px'
+			});
+			$("div.some").animate({
+				left : '+=150px' //每次移动150px
+			});
+		});
+	});
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("button.some").click(function() {
+			$("div.some").animate({
+				left : '500px',
+				opacity : '0.5',
+				height : '200px',
+				width : '200px'
+			});
+			$("div.specific").animate({
+				left : 'toggle' //toggle事件
+			});
+		});
+	});
+</script>
+
+
+</head>
+<body>
+
+	<button type="button" class="single">点击开始动画</button>
+	<button type="button" class="some">多个方面特效</button>
+	<p>默认情况下，所有 HTML 元素的位置都是静态的，并且无法移动。如需对位置进行操作，记得首先把元素的 CSS position
+		属性设置为 relative、fixed 或 absolute。</p>
+	<p>如需对位置进行操作，要记得首先把元素的 CSS position 属性设置为 relative、fixed 或
+		absolute！</p>
+	<div class="single"
+		style="background: red; height: 100px; width: 100px; position: relative"></div>
+
+	<br />
+
+	<div class="specific"
+		style="background: yellow; height: 100px; width: 100px; position: relative"></div>
+
+	<div class="some"
+		style="background: lightblue; height: 100px; width: 100px; position: relative"></div>
+</body>
+</html>
