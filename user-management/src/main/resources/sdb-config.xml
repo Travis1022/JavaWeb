@@ -1,0 +1,6 @@
+<sdb>
+	<config name="xmlconfig"
+		class="org.matt.persistent.db.cfg.SdbXmlConfigure">
+		<param name="file" value="sdb-config-detail.xml" />
+	</config>
+</sdb>

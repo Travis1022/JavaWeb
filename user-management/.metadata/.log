@@ -1,0 +1,61 @@
+!SESSION 2016-07-14 10:51:11.327 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.6.0_13
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_CN
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2016-07-14 10:51:19.053
+!MESSAGE Installed snippet library: D:\Users\Administrator\AppData\Local\MyEclipse\MyEclipse 10\configuration\org.eclipse.osgi\bundles\128\1\.cp\snippets\html\css_snippets.xml
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2016-07-14 10:51:19.085
+!MESSAGE Installed snippet library: D:\Users\Administrator\AppData\Local\MyEclipse\MyEclipse 10\configuration\org.eclipse.osgi\bundles\128\1\.cp\snippets\html\forms_lists_snippets.xml
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2016-07-14 10:51:19.100
+!MESSAGE Installed snippet library: D:\Users\Administrator\AppData\Local\MyEclipse\MyEclipse 10\configuration\org.eclipse.osgi\bundles\128\1\.cp\snippets\html\htmlform_snippets.xml
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2016-07-14 10:51:19.116
+!MESSAGE Installed snippet library: D:\Users\Administrator\AppData\Local\MyEclipse\MyEclipse 10\configuration\org.eclipse.osgi\bundles\128\1\.cp\snippets\html\html_snippets.xml
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2016-07-14 10:51:19.147
+!MESSAGE Installed snippet library: D:\Users\Administrator\AppData\Local\MyEclipse\MyEclipse 10\configuration\org.eclipse.osgi\bundles\128\1\.cp\snippets\html\javascript_snippets.xml
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2016-07-14 10:51:19.163
+!MESSAGE Installed snippet library: D:\Users\Administrator\AppData\Local\MyEclipse\MyEclipse 10\configuration\org.eclipse.osgi\bundles\128\1\.cp\snippets\jsp\jsf_f_snippets.xml
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2016-07-14 10:51:19.194
+!MESSAGE Installed snippet library: D:\Users\Administrator\AppData\Local\MyEclipse\MyEclipse 10\configuration\org.eclipse.osgi\bundles\128\1\.cp\snippets\jsp\jsf_h_snippets.xml
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2016-07-14 10:51:19.381
+!MESSAGE Installed snippet library: D:\Users\Administrator\AppData\Local\MyEclipse\MyEclipse 10\configuration\org.eclipse.osgi\bundles\128\1\.cp\snippets\jsp\struts_bean_snippets.xml
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2016-07-14 10:51:19.397
+!MESSAGE Installed snippet library: D:\Users\Administrator\AppData\Local\MyEclipse\MyEclipse 10\configuration\org.eclipse.osgi\bundles\128\1\.cp\snippets\jsp\struts_html_snippets.xml
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2016-07-14 10:51:19.443
+!MESSAGE Installed snippet library: D:\Users\Administrator\AppData\Local\MyEclipse\MyEclipse 10\configuration\org.eclipse.osgi\bundles\128\1\.cp\snippets\jsp\struts_logic_snippets.xml
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2016-07-14 10:51:19.459
+!MESSAGE Installed snippet library: D:\Users\Administrator\AppData\Local\MyEclipse\MyEclipse 10\configuration\org.eclipse.osgi\bundles\128\1\.cp\snippets\jsp\struts_tiles_snippets.xml
+
+!ENTRY org.tigris.subversion.clientadapter.javahl 1 0 2016-07-14 10:51:36.668
+!MESSAGE Failed to load JavaHL Library.
+These are the errors that were encountered:
+no msvcp100 in java.library.path
+D:\Users\Administrator\AppData\Local\MyEclipse\MyEclipse 10\configuration\org.eclipse.osgi\bundles\1220\1\.cp\libsvnjavahl-1.dll: Can't find dependent libraries
+no svnjavahl-1 in java.library.path
+no svnjavahl in java.library.path
+java.library.path = D:\Users\Administrator\AppData\Local\MyEclipse\Common\binary\com.sun.java.jdk.win32.x86_64_1.6.0.013\bin;.;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;E:\Java\jdk1.7.0_67\\bin;D:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;D:\Program Files\Microsoft SQL Server\100\Tools\Binn\;D:\Program Files\Microsoft SQL Server\100\DTS\Binn\;D:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\VSShell\Common7\IDE\;C:\Program Files (x86)\Microsoft Visual Studio 9.0\Common7\IDE\PrivateAssemblies\;D:\Program Files (x86)\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files\TortoiseSVN\bin;E:\apache-maven-3.2.2\bin
+
+!ENTRY org.eclipse.core.jobs 4 2 2016-07-14 10:53:43.385
+!MESSAGE An internal error occurred during: "CheckLicensesAndNotify".
+!STACK 0
+java.lang.NullPointerException
+	at com.genuitec.pulse.client.targetcfg.collab.ui.jobs.CheckLicensesAndNotifyJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.jobs 2 2 2016-07-14 10:53:44.886
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: com.genuitec.pulse2.client.targetcfg.ui.jobs.InitializeTargetCfgJob
+
+!ENTRY org.eclipse.core.jobs 2 2 2016-07-14 10:53:44.886
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: com.genuitec.pulse2.client.services.internal.PulseClient$1

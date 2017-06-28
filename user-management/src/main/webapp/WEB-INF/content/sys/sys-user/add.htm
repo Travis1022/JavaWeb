@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>用户表新增</title>
+<#include "commons/commonJs.htm">  
+<#include "commons/commonCss.htm">
+<script type="text/javascript">
+	function save(){            
+		jQuery('#fm').form('submit',{                
+			url: '${base}/sys/sys-user/save',                
+			onSubmit: function(){
+				return jQuery(this).form('validate');
+			},
+			success: function(result){
+				result = jQuery.parseJSON(result);
+				Matt.closeWin();  
+				if(!result.success){  
+					window.parent.jQuery.messager.show({title: '错误', msg: result.message });                  
+				} else {                  
+					window.parent.jQuery('#dg').datagrid('reload');   
+				}             
+			}         
+		});     
+	}
+</script>
+</head>
+<body class="easyui-layout" data-options="fit:true">
+	 <div data-options="region:'center',border:false" style="padding: 10px 60px 20px 60px;background:#fff;border:1px solid #ccc;">
+      <form id="fm" method="post">
+			<table width="100%" cellpadding="5">
+    			<tr>
+					<td align="left">
+    			 		单位表ID
+    			 	</td>
+    			 	<td>
+						<input name="infoDepartmentId" class="easyui-textbox">
+    			 	</td>
+    			 </tr>
+    			<tr>
+					<td align="left">
+    			 		姓名
+    			 	</td>
+    			 	<td>
+						<input name="name" class="easyui-textbox" >
+    			 	</td>
+    			 </tr>
+    			<tr>
+					<td align="left">
+    			 		邮箱
+    			 	</td>
+    			 	<td>
+						<input name="email" class="easyui-textbox" >
+    			 	</td>
+    			 </tr>
+    			<tr>
+					<td align="left">
+    			 		性别
+    			 	</td>
+    			 	<td>
+    			 		<select id="cc" class="easyui-combobox" name="sex" style="width:136px;">
+    			 			${DictionaryHelper.getOptions("sys_user","sex")}
+						</select>
+    			 	</td>
+    			 </tr>
+    			<tr>
+					<td align="left">
+    			 		手机号码
+    			 	</td>
+    			 	<td>
+						<input name="mobile" class="easyui-textbox" >
+    			 	</td>
+    			 </tr>
+    			<tr>
+					<td align="left">
+    			 		照片路径
+    			 	</td>
+    			 	<td>
+						<input name="photoPath" class="easyui-textbox">
+    			 	</td>
+    			 </tr>
+         	</table>
+	</form>
+	</div>
+        <div region="south" border="false" style="text-align: right; height: 30px;padding-top:3px;padding-right:10px">
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick="save()">保存</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="Matt.closeWin()">取消</a>
+        </div>
+</body>
+</html>

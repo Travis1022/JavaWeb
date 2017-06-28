@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hzcec.sys.domain.SysUser">
+	<resultMap id="get-SysUser-result" type="com.hzcec.sys.domain.SysUser">
+		<result property="id" column="ID" />
+		<!-- 单位表ID -->
+		<result property="infoDepartmentId" column="Info_Department_Id" />
+		<!-- 姓名 -->
+		<result property="name" column="Name" />
+		<!-- 邮箱 -->
+		<result property="email" column="Email" />
+		<!-- 性别 -->
+		<result property="sex" column="Sex" />
+		<!-- 手机号码 -->
+		<result property="mobile" column="Mobile" />
+		<!-- 照片路径 -->
+		<result property="photoPath" column="Photo_Path" />
+		<!-- 创建时间 -->
+		<result property="createDate" column="CREATE_DATE" />
+		<!-- 创建人 -->
+		<result property="createUserId" column="CREATE_USER_ID" />
+		<!-- 修改时间 -->
+		<result property="modifyDate" column="MODIFY_DATE" />
+		<!-- 修改人 -->
+		<result property="modifyUserId" column="MODIFY_USER_ID" />
+		<!-- 软删除标识 -->
+		<result property="sts" column="STS" />
+
+	</resultMap>
+	<sql id="SysUser_Base_Column_List">
+		ID,
+		<!-- 单位表ID -->
+		Info_Department_Id,
+		<!-- 姓名 -->
+		Name,
+		<!-- 邮箱 -->
+		Email,
+		<!-- 性别 -->
+		Sex,
+		<!-- 手机号码 -->
+		Mobile,
+		<!-- 照片路径 -->
+		Photo_Path,
+		<!-- 创建时间 -->
+		CREATE_DATE,
+		<!-- 创建人 -->
+		CREATE_USER_ID,
+		<!-- 更新时间 -->
+		MODIFY_DATE,
+		<!-- 更新人 -->
+		MODIFY_USER_ID,
+		<!-- 假删除标识 -->
+		STS
+	</sql>
+
+	<insert id="SysUser_insert" parameterType="com.hzcec.sys.domain.SysUser"
+		useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO sys_user(
+		<if test="infoDepartmentId != null">
+			Info_Department_Id,
+		</if>
+		<if test="name != null">
+			Name,
+		</if>
+		<if test="email != null">
+			Email,
+		</if>
+		<if test="sex != null">
+			Sex,
+		</if>
+		<if test="mobile != null">
+			Mobile,
+		</if>
+		<if test="photoPath != null">
+			Photo_Path,
+		</if>
+		CREATE_DATE,
+		<if test="createUserId != null">
+			CREATE_USER_ID,
+		</if>
+		sts)values(
+		<if test="infoDepartmentId != null">
+			#{infoDepartmentId},
+		</if>
+		<if test="name != null">
+			#{name},
+		</if>
+		<if test="email != null">
+			#{email},
+		</if>
+		<if test="sex != null">
+			#{sex},
+		</if>
+		<if test="mobile != null">
+			#{mobile},
+		</if>
+		<if test="photoPath != null">
+			#{photoPath},
+		</if>
+		NOW(),
+		<if test="createUserId != null">
+			#{createUserId},
+		</if>
+		'Y')
+	</insert>
+	<update id="SysUser_update" parameterType="com.hzcec.sys.domain.SysUser">
+		UPDATE sys_user
+		set
+		Info_Department_Id = #{infoDepartmentId},
+		Name = #{name},
+		Email =
+		#{email},
+		Sex = #{sex},
+		Mobile = #{mobile},
+		Photo_Path = #{photoPath},
+		MODIFY_DATE = now()
+		,MODIFY_USER_ID = #{modifyUserId}
+		WHERE
+		ID = #{id}
+	</update>
+
+	<delete id="SysUser_delete" parameterType="com.hzcec.sys.domain.SysUser">
+		DELETE FROM sys_user
+		WHERE
+		ID = #{id}
+	</delete>
+</mapper>

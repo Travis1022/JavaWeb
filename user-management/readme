@@ -1,0 +1,28 @@
+1.框架构成
+springmvc4.1.0+spring4.1.0+mybatis3.2.7
+2.开发环境
+MyEclipse10、apache-maven-3.2.2
+3.源码生成工具
+matt-autocode
+4.运行环境
+jdk1.7、tomcat7
+5.调试环境
+jetty9
+7.核心组件
+matt-core、matt-commons、matt-test
+8.初始工程搭建与测试
+1>Myeclipse10、maven3.2.2环境、jdk1.7、tomcat7、mysql5.6准备与安装
+2>将repository资源包覆盖到本地资源仓库
+3>在mysql5.6的test数据库中执行db.sql（在doc文件夹下），
+将db表及测试数据导入mysql数据库。
+4>在Eclipse下导入user-management工程，编译完成后
+右键点击工程->Run as->第二个Maven build->Goals空格中填入jetty:run->Run则打开jetty服务。
+5>打开浏览器输入http://localhost:8080/user-management进入系统首页。
+6>输入http://localhost:8080/user-management/sys/sys-user,显示用户列表页面则测试成功。包括相应的增删查改操作.
+jetty插件默认端口号为8080，可在pom.xml中修改。
+
+7>1.0.0版完成基本框架功能
+8>1.0.1版增加了多数据源的功能
+9>2.0.0版修复了持久层manytoone功能的BUG，增加了一些开发实例
+
+10>备注：工作空间文件夹命名不可以有空格，此程序没有添加对空格的处理（例如：不能使用java workspace作为工作空间的名称，中间去掉空格即可）

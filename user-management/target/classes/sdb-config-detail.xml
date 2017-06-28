@@ -1,0 +1,11 @@
+<sdb database="mysql" pagesize="25">
+	<sqlmap packages="com.hzcec" patterns="*_exp.xml"/>
+     <finds>
+		<find name="annotation" class="org.matt.persistent.db.find.annotation.AnnotationFind">
+			<param name="test" value=""/> 
+		</find>
+    </finds>
+    <rules>
+    	<rule packages="org,com" pattern="org.matt.*,com.hzcec.*" find="annotation"/> 
+    </rules>
+</sdb>
