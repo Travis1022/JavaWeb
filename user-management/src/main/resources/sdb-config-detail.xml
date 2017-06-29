@@ -6,6 +6,6 @@
 		</find>
     </finds>
     <rules>
-    	<rule packages="org,com" pattern="org.matt.*,com.hzcec.*" find="annotation"/> 
+    	<rule packages="org,com" pattern="org.matt.*,com.travis.*" find="annotation"/>
     </rules>
 </sdb>

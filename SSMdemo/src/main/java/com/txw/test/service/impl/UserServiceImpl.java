@@ -8,17 +8,18 @@ import org.springframework.stereotype.Service;
 
 import com.txw.test.dao.UserDao;
 import com.txw.test.entity.UserEntity;
-import com.txw.test.service.UserService;
+import com.txw.test.service.IUserService;
 
-@Service("UserService")
-public class UserServiceImpl implements UserService {
+@Service("IUserService")
+public class UserServiceImpl implements IUserService {
 
 	@Autowired
 	private UserDao dao;
 
-	@Override
 	public List<UserEntity> userList(Map<String, Object> map) {
 		return dao.userList(map);
 	}
+
+	
 
 }

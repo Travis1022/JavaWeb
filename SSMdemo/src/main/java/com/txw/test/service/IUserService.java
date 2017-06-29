@@ -5,6 +5,6 @@ import java.util.Map;
 
 import com.txw.test.entity.UserEntity;
 
-public interface UserService {
-	public List<UserEntity> userList(Map<String, Object> map);
+public interface IUserService {
+    List<UserEntity> userList(Map<String, Object> map);
 }

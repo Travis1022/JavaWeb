@@ -85,8 +85,8 @@ public class SysUser extends BaseEntity {
 		
 	public void setEmail(String email){
 		this.email = email;
-	} 
-	
+	}
+
 	public String getEmail(){
 		return email;
 	} 

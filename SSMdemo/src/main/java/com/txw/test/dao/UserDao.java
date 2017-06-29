@@ -6,5 +6,5 @@ import java.util.Map;
 import com.txw.test.entity.UserEntity;
 
 public interface UserDao {
-	public List<UserEntity> userList(Map<String, Object> map);
+    List<UserEntity> userList(Map<String, Object> map);
 }
