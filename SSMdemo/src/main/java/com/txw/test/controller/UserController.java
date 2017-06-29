@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.txw.test.common.entity.ResultEntity;
 import com.txw.test.entity.UserEntity;
-import com.txw.test.service.UserService;
+import com.txw.test.service.IUserService;
 
 @Controller
 @RequestMapping("User")
@@ -22,7 +22,7 @@ public class UserController {
 	private Logger LOG = Logger.getLogger(this.getClass());
 
 	@Resource
-	private UserService iUserService;
+	private IUserService iUserService;
 
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	@ResponseBody

@@ -13,13 +13,13 @@ import com.txw.test.service.IUserService;
 @Service("IUserService")
 public class UserServiceImpl implements IUserService {
 
-	@Autowired
-	private UserDao dao;
 
-	public List<UserEntity> userList(Map<String, Object> map) {
-		return dao.userList(map);
-	}
+    @Autowired(required = false)
+    private UserDao dao;
 
-	
+    public List<UserEntity> userList(Map<String, Object> map) {
+        return dao.userList(map);
+    }
+
 
 }
