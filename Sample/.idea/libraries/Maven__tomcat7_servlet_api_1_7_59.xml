@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: tomcat7:servlet-api:1.7.59">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/tomcat7/servlet-api/1.7.59/servlet-api-1.7.59.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/tomcat7/servlet-api/1.7.59/servlet-api-1.7.59-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/tomcat7/servlet-api/1.7.59/servlet-api-1.7.59-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

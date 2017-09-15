@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.hzcec:hzcec-list:0.0.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/hzcec/hzcec-list/0.0.1-SNAPSHOT/hzcec-list-0.0.1-20161031.065119-2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/hzcec/hzcec-list/0.0.1-SNAPSHOT/hzcec-list-0.0.1-20161031.065119-2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/hzcec/hzcec-list/0.0.1-SNAPSHOT/hzcec-list-0.0.1-20161031.065119-2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
