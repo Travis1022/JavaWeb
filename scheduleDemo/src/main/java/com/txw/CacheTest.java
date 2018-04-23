@@ -18,13 +18,15 @@ public class CacheTest {
         Cache cache = cacheManager.getCache("HelloWorldCache");
 
         // 3. 创建元素
-        Element element = new Element("key1", "value1");
+        Element element = new Element("key-1", "value1");
         cache.put(element);
-        Element value = cache.get("key1");
+        Element value = cache.get("key-1");
         System.out.println(value);
         System.out.println(value.getObjectValue());
 
-        cache.remove("key1");
+        cache.remove("key-1");
+
+
         Dog dog = new Dog(1L, "tai di");
         Element element2 = new Element("tai di", dog);
         cache.put(element2);
